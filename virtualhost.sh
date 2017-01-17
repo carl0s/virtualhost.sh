@@ -40,7 +40,7 @@ fi
 # to change this, like to how Apple does things by default, uncomment the
 # following line:
 #
-#DOC_ROOT_PREFIX="/Library/WebServer/Documents"
+DOC_ROOT_PREFIX="/Users/c/Documents/nois3/web"
 
 # Configure the apache-related paths
 #
@@ -52,7 +52,7 @@ fi
 : ${OPEN_COMMAND:="/usr/bin/open"}
 
 # If you want to use a different browser than Safari, define it here:
-#BROWSER="Firefox"
+BROWSER="Firefox"
 #BROWSER="WebKit"
 #BROWSER="Google Chrome"
 
@@ -181,13 +181,13 @@ create_virtualhost()
   cat << __EOF >$APACHE_CONFIG/virtualhosts/$VIRTUALHOST
 # Created $date
 <VirtualHost *:$APACHE_PORT>
-  DocumentRoot "$2"
+  DocumentRoot "$2/web"
   ServerName $VIRTUALHOST
   $SERVER_ALIAS
 
   ScriptAlias /cgi-bin "$2/cgi-bin"
 
-  <Directory "$2">
+  <Directory "$2/web">
     Options All
     AllowOverride All
     <IfModule mod_authz_core.c>
@@ -740,8 +740,11 @@ fi
 
 # Create the folder if we need to...
 if [ ! -d "${FOLDER}" ]; then
-  /bin/echo -n "  + Creating folder ${FOLDER}... "
+  /bin/echo -n "+ Creating folder ${FOLDER}... "
   su $USER -c "mkdir -p $FOLDER"
+  /bin/echo -n $FOLDER
+  /bin/echo -n "+ Creating subfolder web... "
+  su $USER -c "mkdir -p $FOLDER/web"
 
   # Error out if the folder was not created.
   if [ ! -d "${FOLDER}" ]; then
@@ -788,9 +791,9 @@ fi
 # Create a default index.html if there isn't already one there
 #
 if checkyesno ${CREATE_INDEX}; then
-  if [ ! -e "${FOLDER}/index.html" -a ! -e "${FOLDER}/index.php" ]; then
+  if [ ! -e "${FOLDER}/web/index.html" -a ! -e "${FOLDER}/index.php" ]; then
     /bin/echo -n "+ Creating 'index.html'... "
-    cat << __EOF >"${FOLDER}/index.html"
+    cat << __EOF >"${FOLDER}/web/index.html"
 <html>
 <head>
 <title>Welcome to $VIRTUALHOST</title>
