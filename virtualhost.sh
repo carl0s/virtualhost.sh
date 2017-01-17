@@ -740,10 +740,10 @@ fi
 
 # Create the folder if we need to...
 if [ ! -d "${FOLDER}" ]; then
-  /bin/echo -n "+ Creating folder ${FOLDER}... "
+  /bin/echo -n "+ Creating folder ${FOLDER}...\n"
   su $USER -c "mkdir -p $FOLDER"
   /bin/echo -n $FOLDER
-  /bin/echo -n "+ Creating subfolder web... "
+  /bin/echo -n "+ Creating subfolder web...\n"
   su $USER -c "mkdir -p $FOLDER/web"
 
   # Error out if the folder was not created.
