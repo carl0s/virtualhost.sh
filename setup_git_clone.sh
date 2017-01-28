@@ -1,8 +1,8 @@
 #!/bin/sh
 #================================================================================
 SCRIPT_DIR=${PWD}
-WEB_DIR=$HOME"/Documents/nois3/web/"
-PRIVATEKEY=$HOME"/.ssh/certs/c"
+WEB_DIR=$HOME"/path/to/dir/"
+PRIVATEKEY=$HOME"/path/to/key"
 
 
 usage()

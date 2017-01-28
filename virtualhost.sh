@@ -44,7 +44,7 @@ DOC_ROOT_PREFIX="/Users/c/Documents/nois3/web"
 
 # Configure the apache-related paths
 #
-: ${APACHE_CONFIG:="/private/etc/apache2"}
+: ${APACHE_CONFIG:="/usr/local/etc/apache2/2.4/"}
 : ${APACHECTL:="/usr/local/bin/apachectl"}
 
 # If you wish to change the default application that gets launched after the
