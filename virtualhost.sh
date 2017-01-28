@@ -45,7 +45,7 @@ fi
 # Configure the apache-related paths
 #
 : ${APACHE_CONFIG:="/private/etc/apache2"}
-: ${APACHECTL:="/usr/sbin/apachectl"}
+: ${APACHECTL:="/usr/local/bin/apachectl"}
 
 # If you wish to change the default application that gets launched after the
 # virtual host is created, define it here:
@@ -362,7 +362,7 @@ if [ -z $USER -o $USER = "root" ]; then
 fi
 
 if [ -z $DOC_ROOT_PREFIX ]; then
-  DOC_ROOT_PREFIX="${HOME_PARTITION}/$USER/Sites"
+  DOC_ROOT_PREFIX="${HOME_PARTITION}/$USER/Documents/nois3/web"
 fi
 
 if [ -z $SKIP_VERSION_CHECK ]; then
